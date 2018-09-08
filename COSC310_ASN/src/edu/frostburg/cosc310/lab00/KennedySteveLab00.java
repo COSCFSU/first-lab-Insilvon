@@ -5,7 +5,7 @@
  * Please put your name, date, and brief description of this class here.
  */
 package edu.frostburg.cosc310.lab00;
-
+import java.util.*;
 /**
  * Your documentation should begin here.
  * @author SteveK
@@ -51,7 +51,40 @@ public class KennedySteveLab00 implements Lab00 {
 
     @Override
     public long problem2() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        int size = 100000;
+        
+        ArrayList<String> myArray = new ArrayList<String>(size);
+        LinkedList<String> myLinkedList = new LinkedList<String>();
+        
+        long time1 = System.currentTimeMillis();
+        for (int i = 0; i<myArray.size();i++){
+        myArray.set(i, Integer.toString(i));
+        }
+        long time2 = System.currentTimeMillis();
+        long firsttime = time1-time2;
+        
+        time1 = System.currentTimeMillis();
+        for (int j = 0;j<size;j++){
+        myLinkedList.add(Integer.toString(j));
+        }
+        time2 = System.currentTimeMillis();
+        long secondtime = time1-time2;
+        
+        if (firsttime>secondtime){
+            System.out.println("The Linked List was faster by " + (secondtime-firsttime));
+            return secondtime;
+        }
+        else if (firsttime<secondtime) {
+            System.out.println("The ArrayList was faster by "+(firsttime-secondtime));
+            return firsttime;
+        }
+        else {
+            System.out.println("The times were equal!");
+            return 0;
+        }
+        
+        
     }
     
 }
